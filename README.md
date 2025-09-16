@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# Miela Digital - iGaming Marketing Agency
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/6a57ba9d-cbf6-4caf-8f91-f4c5b2601502
+Miela Digital is a premium B2B marketing agency specializing exclusively in iGaming markets. We provide strategic positioning, acquisition, and retention services for high-level clients in the regulated iGaming industry.
 
-## How can I edit this code?
+## Technologies Used
 
-There are several ways of editing your application.
+This project is built with modern web technologies:
 
-**Use Lovable**
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Type-safe JavaScript development
+- **React** - Modern UI library with hooks
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality UI components
+- **React Router** - Client-side routing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6a57ba9d-cbf6-4caf-8f91-f4c5b2601502) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or higher)
+- npm or yarn package manager
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+```bash
+git clone https://github.com/ibheelz/Mieladigital.git
+cd Mieladigital
+```
 
-Follow these steps:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and visit `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── assets/             # Static assets (images, logos)
+├── hooks/              # Custom React hooks
+└── lib/                # Utility functions and configurations
+```
 
-This project is built with:
+## Key Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Liquid Glass Design** - Modern glassmorphism aesthetics
+- **Responsive Design** - Optimized for all device sizes
+- **Contact Forms** - Separate forms for clients and providers
+- **Blog System** - Industry insights and company updates
+- **Performance Optimized** - Fast loading and smooth interactions
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/6a57ba9d-cbf6-4caf-8f91-f4c5b2601502) and click on Share -> Publish.
+The site is deployed using GitHub Pages and can be accessed at the production URL.
 
-## Can I connect a custom domain to my Lovable project?
+## Contact
 
-Yes, you can!
+For business inquiries: contact@mieladigital.com
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+© 2025 Miela Digital. All rights reserved.

@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 // SVG Icon Components
 const UserIcon = () => (
@@ -56,33 +55,46 @@ const CallToAction = () => {
     setIsSubmitting(prev => ({ ...prev, client: true }));
 
     try {
+      // Try EmailJS first
+      const templateParams = {
+        from_name: clientForm.name,
+        from_email: clientForm.email,
+        company: clientForm.company,
+        message: clientForm.message,
+        inquiry_type: 'Client Services',
+        to_email: EMAILJS_CONFIG.TO_EMAIL
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATES.CLIENT,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      });
+
+      setClientForm({ name: "", company: "", email: "", message: "" });
+
+    } catch (error) {
+      console.error('EmailJS failed, falling back to mailto:', error);
+
+      // Fallback to mailto
       const subject = encodeURIComponent('New Client Inquiry from Miela Digital');
-      const body = encodeURIComponent(`Name: ${clientForm.name}
-Company: ${clientForm.company}
-Email: ${clientForm.email}
-Inquiry Type: Client Services
+      const body = encodeURIComponent(`Name: ${clientForm.name}\nCompany: ${clientForm.company}\nEmail: ${clientForm.email}\nInquiry Type: Client Services\n\nMessage:\n${clientForm.message}\n\n---\nThis inquiry was submitted through mieladigital.com`);
+      const mailtoLink = `mailto:${EMAILJS_CONFIG.TO_EMAIL}?subject=${subject}&body=${body}`;
 
-Message:
-${clientForm.message}
-
----
-This inquiry was submitted through mieladigital.com`);
-
-      const mailtoLink = `mailto:contact@mieladigital.com?subject=${subject}&body=${body}`;
       window.open(mailtoLink);
 
       toast({
         title: "Email Client Opened",
-        description: "Your default email app should open with the message pre-filled. Simply send the email!",
+        description: "Your default email app opened with the message pre-filled. Please send the email.",
       });
 
       setClientForm({ name: "", company: "", email: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Could not open email client. Please contact us directly at contact@mieladigital.com",
-        variant: "destructive",
-      });
     } finally {
       setIsSubmitting(prev => ({ ...prev, client: false }));
     }
@@ -93,33 +105,46 @@ This inquiry was submitted through mieladigital.com`);
     setIsSubmitting(prev => ({ ...prev, partner: true }));
 
     try {
+      // Try EmailJS first
+      const templateParams = {
+        from_name: partnerForm.name,
+        from_email: partnerForm.email,
+        company: partnerForm.company,
+        message: partnerForm.message,
+        inquiry_type: 'Partnership/Provider',
+        to_email: EMAILJS_CONFIG.TO_EMAIL
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATES.PROVIDER,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for your interest in partnering with us. We'll review your proposal and get back to you soon.",
+      });
+
+      setPartnerForm({ name: "", company: "", email: "", message: "" });
+
+    } catch (error) {
+      console.error('EmailJS failed, falling back to mailto:', error);
+
+      // Fallback to mailto
       const subject = encodeURIComponent('New Partnership Inquiry from Miela Digital');
-      const body = encodeURIComponent(`Name: ${partnerForm.name}
-Company: ${partnerForm.company}
-Email: ${partnerForm.email}
-Inquiry Type: Partnership/Provider
+      const body = encodeURIComponent(`Name: ${partnerForm.name}\nCompany: ${partnerForm.company}\nEmail: ${partnerForm.email}\nInquiry Type: Partnership/Provider\n\nMessage:\n${partnerForm.message}\n\n---\nThis inquiry was submitted through mieladigital.com`);
+      const mailtoLink = `mailto:${EMAILJS_CONFIG.TO_EMAIL}?subject=${subject}&body=${body}`;
 
-Message:
-${partnerForm.message}
-
----
-This inquiry was submitted through mieladigital.com`);
-
-      const mailtoLink = `mailto:contact@mieladigital.com?subject=${subject}&body=${body}`;
       window.open(mailtoLink);
 
       toast({
         title: "Email Client Opened",
-        description: "Your default email app should open with the message pre-filled. Simply send the email!",
+        description: "Your default email app opened with the message pre-filled. Please send the email.",
       });
 
       setPartnerForm({ name: "", company: "", email: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Could not open email client. Please contact us directly at contact@mieladigital.com",
-        variant: "destructive",
-      });
     } finally {
       setIsSubmitting(prev => ({ ...prev, partner: false }));
     }
