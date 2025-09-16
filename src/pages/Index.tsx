@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import Credibility from "@/components/Credibility";
 import Philosophy from "@/components/Philosophy";
 import CallToAction from "@/components/CallToAction";
 import Header from "@/components/Header";
@@ -19,9 +18,6 @@ const Index = () => {
         </section>
         <section id="approach">
           <Philosophy />
-        </section>
-        <section id="about">
-          <Credibility />
         </section>
         <section id="contact">
           <CallToAction />

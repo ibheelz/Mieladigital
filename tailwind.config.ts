@@ -9,11 +9,15 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
+        "xs": "375px",
         "2xl": "1400px",
       },
     },
     extend: {
       fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'helvetica-neue': ['Helvetica Neue Condensed', 'Oswald', 'Arial Narrow', 'sans-serif-condensed', 'sans-serif'],
+        'oswald': ['Oswald', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         playfair: ['Playfair Display', 'serif'],
       },
@@ -96,7 +100,7 @@ export default {
         },
         "scroll": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },

@@ -3,6 +3,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import companyLogo from "@/assets/company-logo.jpeg";
 
+// SVG Icon Components
+const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+    />
+  </svg>
+);
+
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,104 +51,102 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-premium-black/95 backdrop-blur-sm border-b border-gold/20">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xl px-4">
+      <div className="glass-nav rounded-2xl px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Company Logo */}
-          <Link to="/" className="h-16 w-16">
-            <img 
-              src={companyLogo} 
-              alt="Miela Digital Company Logo" 
-              className="h-full w-full object-contain hover:opacity-80 transition-opacity"
-            />
+          <Link to="/" className="flex items-center">
+            <img src={companyLogo} alt="Miela" className="h-8 w-auto" />
           </Link>
-          
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('approach')}
-              className="text-muted-on-black hover:text-gold transition-premium font-medium"
-            >
-              Approach
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-muted-on-black hover:text-gold transition-premium font-medium"
-            >
-              Partners
-            </button>
-            <Link 
-              to="/newsroom"
-              className="text-muted-on-black hover:text-gold transition-premium font-medium"
-            >
-              Newsroom
-            </Link>
-            <Button 
-              variant="premium-outline" 
-              size="sm"
-              onClick={() => scrollToSection('contact')}
-            >
-              Contact
-            </Button>
-          </nav>
+
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <nav className="flex items-center space-x-8">
+              <Link
+                to="/"
+                className={`transition-all font-medium text-xs uppercase tracking-widest ${
+                  location.pathname === '/'
+                    ? 'text-yellow-400'
+                    : 'text-gray-300 hover:text-yellow-400'
+                }`}
+              >
+                Home
+              </Link>
+              <button
+                onClick={() => scrollToSection('approach')}
+                className="text-gray-300 hover:text-yellow-400 transition-all font-medium text-xs uppercase tracking-widest"
+              >
+                About
+              </button>
+              <Link
+                to="/newsroom"
+                className="text-gray-300 hover:text-yellow-400 transition-all font-medium text-xs uppercase tracking-widest"
+              >
+                Blogs
+              </Link>
+            </nav>
+          </div>
+
+          {/* Desktop Contact Button */}
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="hidden md:block glass-button px-3 py-1.5 text-gold font-medium hover:bg-yellow-400 hover:text-black hover:font-bold transition-all text-xs uppercase tracking-widest"
+          >
+            Contact
+          </button>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-gold hover:text-gold/80 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
-              />
-            </svg>
+            <HamburgerIcon isOpen={mobileMenuOpen} />
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-premium-black/98 backdrop-blur-sm border-t border-gold/20">
-          <nav className="px-6 py-4 space-y-4">
-            <button 
+        <div className="md:hidden bg-black/95 backdrop-blur-md border border-white/10 mt-2 rounded-lg">
+          <nav className="px-4 py-3 space-y-1">
+            <Link
+              to="/"
+              className={`block py-2 px-3 rounded transition-all font-medium text-sm ${
+                location.pathname === '/'
+                  ? 'text-yellow-400 bg-yellow-400/10'
+                  : 'text-gray-300 hover:text-yellow-400 hover:bg-white/5'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <button
               onClick={() => {
                 scrollToSection('approach');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-muted-on-black hover:text-gold transition-premium font-medium py-3"
+              className="block w-full text-left py-2 px-3 rounded text-gray-300 hover:text-yellow-400 hover:bg-white/5 transition-all font-medium text-sm"
             >
-              Approach
+              About
             </button>
-            <button 
-              onClick={() => {
-                scrollToSection('about');
-                setMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-muted-on-black hover:text-gold transition-premium font-medium py-3"
-            >
-              Partners
-            </button>
-            <Link 
+            <Link
               to="/newsroom"
-              className="block text-muted-on-black hover:text-gold transition-premium font-medium py-3"
+              className="block py-2 px-3 rounded text-gray-300 hover:text-yellow-400 hover:bg-white/5 transition-all font-medium text-sm"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Newsroom
+              Blogs
             </Link>
-            <Button 
-              variant="premium-outline" 
-              size="sm"
-              className="w-full mt-4"
-              onClick={() => {
-                scrollToSection('contact');
-                setMobileMenuOpen(false);
-              }}
-            >
-              Contact
-            </Button>
+            <div className="pt-2 mt-2 border-t border-white/10">
+              <button
+                className="block w-full py-2 px-3 rounded bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400 hover:text-black font-medium text-sm transition-all"
+                onClick={() => {
+                  scrollToSection('contact');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Contact
+              </button>
+            </div>
           </nav>
         </div>
       )}
