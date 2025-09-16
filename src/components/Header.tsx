@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import companyLogo from "@/assets/company-logo.jpeg";
+import companyLogo from "../../Miela-Logo.png";
 
 // SVG Icon Components
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
@@ -12,6 +12,12 @@ const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
       strokeWidth={2}
       d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
     />
+  </svg>
+);
+
+const ContactIcon = () => (
+  <svg className="w-3 h-3 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
   </svg>
 );
 
@@ -51,16 +57,16 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xl px-4">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
       <div className="glass-nav rounded-2xl px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Company Logo */}
           <Link to="/" className="flex items-center">
-            <img src={companyLogo} alt="Miela" className="h-8 w-auto" />
+            <img src={companyLogo} alt="Miela" className="h-12 w-auto" />
           </Link>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex items-center justify-center flex-1">
+          {/* Desktop Navigation - Right Side */}
+          <div className="hidden md:flex items-center space-x-8">
             <nav className="flex items-center space-x-8">
               <Link
                 to="/"
@@ -85,15 +91,16 @@ const Header = () => {
                 Blogs
               </Link>
             </nav>
-          </div>
 
-          {/* Desktop Contact Button */}
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="hidden md:block glass-button px-3 py-1.5 text-gold font-medium hover:bg-yellow-400 hover:text-black hover:font-bold transition-all text-xs uppercase tracking-widest"
-          >
-            Contact Us
-          </button>
+            {/* Desktop Contact Button */}
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="glass-button px-3 py-1.5 text-gold font-medium hover:bg-yellow-400 hover:text-black hover:font-bold transition-all text-xs uppercase tracking-widest flex items-center"
+            >
+              <ContactIcon />
+              Contact Us
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -138,12 +145,13 @@ const Header = () => {
             </Link>
             <div className="pt-2 mt-2 border-t border-white/10">
               <button
-                className="block w-full py-2 px-3 rounded bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400 hover:text-black font-medium text-sm transition-all"
+                className="block w-full py-2 px-3 rounded bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400 hover:text-black font-medium text-sm transition-all flex items-center justify-start"
                 onClick={() => {
                   scrollToSection('contact');
                   setMobileMenuOpen(false);
                 }}
               >
+                <ContactIcon />
                 Contact Us
               </button>
             </div>
