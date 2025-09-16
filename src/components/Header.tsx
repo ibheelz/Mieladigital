@@ -92,7 +92,7 @@ const Header = () => {
             onClick={() => scrollToSection('contact')}
             className="hidden md:block glass-button px-3 py-1.5 text-gold font-medium hover:bg-yellow-400 hover:text-black hover:font-bold transition-all text-xs uppercase tracking-widest"
           >
-            Contact
+            Contact Us
           </button>
 
           {/* Mobile Menu Button */}
@@ -144,7 +144,7 @@ const Header = () => {
                   setMobileMenuOpen(false);
                 }}
               >
-                Contact
+                Contact Us
               </button>
             </div>
           </nav>
