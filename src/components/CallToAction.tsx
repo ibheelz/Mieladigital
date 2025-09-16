@@ -25,35 +25,31 @@ const CallToAction = () => {
     setIsSubmitting(prev => ({ ...prev, client: true }));
 
     try {
-      const response = await fetch('https://formspree.io/f/xanydqjy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: clientForm.name,
-          email: clientForm.email,
-          company: clientForm.company,
-          message: clientForm.message,
-          subject: 'New Client Inquiry from Miela Digital',
-          inquiry_type: 'Client Services',
-          _replyto: clientForm.email
-        })
+      const subject = encodeURIComponent('New Client Inquiry from Miela Digital');
+      const body = encodeURIComponent(`Name: ${clientForm.name}
+Company: ${clientForm.company}
+Email: ${clientForm.email}
+Inquiry Type: Client Services
+
+Message:
+${clientForm.message}
+
+---
+This inquiry was submitted through mieladigital.com`);
+
+      const mailtoLink = `mailto:contact@mieladigital.com?subject=${subject}&body=${body}`;
+      window.open(mailtoLink);
+
+      toast({
+        title: "Email Client Opened",
+        description: "Your default email app should open with the message pre-filled. Simply send the email!",
       });
 
-      if (response.ok) {
-        toast({
-          title: "Inquiry Submitted",
-          description: "Thank you for your interest. We'll be in touch soon.",
-        });
-        setClientForm({ name: "", company: "", email: "", message: "" });
-      } else {
-        throw new Error('Submission failed');
-      }
+      setClientForm({ name: "", company: "", email: "", message: "" });
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to submit inquiry. Please try again.",
+        description: "Could not open email client. Please contact us directly at contact@mieladigital.com",
         variant: "destructive",
       });
     } finally {
@@ -66,35 +62,31 @@ const CallToAction = () => {
     setIsSubmitting(prev => ({ ...prev, partner: true }));
 
     try {
-      const response = await fetch('https://formspree.io/f/xanydqjy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: partnerForm.name,
-          email: partnerForm.email,
-          company: partnerForm.company,
-          message: partnerForm.message,
-          subject: 'New Partnership Inquiry from Miela Digital',
-          inquiry_type: 'Partnership/Provider',
-          _replyto: partnerForm.email
-        })
+      const subject = encodeURIComponent('New Partnership Inquiry from Miela Digital');
+      const body = encodeURIComponent(`Name: ${partnerForm.name}
+Company: ${partnerForm.company}
+Email: ${partnerForm.email}
+Inquiry Type: Partnership/Provider
+
+Message:
+${partnerForm.message}
+
+---
+This inquiry was submitted through mieladigital.com`);
+
+      const mailtoLink = `mailto:contact@mieladigital.com?subject=${subject}&body=${body}`;
+      window.open(mailtoLink);
+
+      toast({
+        title: "Email Client Opened",
+        description: "Your default email app should open with the message pre-filled. Simply send the email!",
       });
 
-      if (response.ok) {
-        toast({
-          title: "Partnership Inquiry Submitted",
-          description: "Thank you for your interest. We'll review your submission.",
-        });
-        setPartnerForm({ name: "", company: "", email: "", message: "" });
-      } else {
-        throw new Error('Submission failed');
-      }
+      setPartnerForm({ name: "", company: "", email: "", message: "" });
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to submit inquiry. Please try again.",
+        description: "Could not open email client. Please contact us directly at contact@mieladigital.com",
         variant: "destructive",
       });
     } finally {
