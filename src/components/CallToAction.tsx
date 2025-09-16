@@ -22,17 +22,22 @@ const CallToAction = () => {
 
   const handleClientSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Client form submitted:', clientForm);
     setIsSubmitting(prev => ({ ...prev, client: true }));
 
     try {
-      console.log('Making request to:', '/functions/v1/submit-inquiry');
-      const response = await fetch('/functions/v1/submit-inquiry', {
+      const response = await fetch('https://formspree.io/f/xanydqjy', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
-          ...clientForm,
-          type: 'client'
+          name: clientForm.name,
+          email: clientForm.email,
+          company: clientForm.company,
+          message: clientForm.message,
+          subject: 'New Client Inquiry from Miela Digital',
+          inquiry_type: 'Client Services',
+          _replyto: clientForm.email
         })
       });
 
@@ -58,17 +63,22 @@ const CallToAction = () => {
 
   const handlePartnerSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Partner form submitted:', partnerForm);
     setIsSubmitting(prev => ({ ...prev, partner: true }));
 
     try {
-      console.log('Making request to:', '/functions/v1/submit-inquiry');
-      const response = await fetch('/functions/v1/submit-inquiry', {
+      const response = await fetch('https://formspree.io/f/xanydqjy', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
-          ...partnerForm,
-          type: 'partner'
+          name: partnerForm.name,
+          email: partnerForm.email,
+          company: partnerForm.company,
+          message: partnerForm.message,
+          subject: 'New Partnership Inquiry from Miela Digital',
+          inquiry_type: 'Partnership/Provider',
+          _replyto: partnerForm.email
         })
       });
 
