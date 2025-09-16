@@ -1,0 +1,18 @@
+/* Premium iGaming Marketing Agency Styles */
+
+/* Remove default Vite styles - using our custom design system */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom image filters for gold effect */
+.filter-gold {
+  filter: invert(56%) sepia(88%) saturate(1345%) hue-rotate(25deg) brightness(101%) contrast(101%);
+}
