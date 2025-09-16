@@ -71,12 +71,6 @@ const Header = () => {
             >
               Newsroom
             </Link>
-            <Link 
-              to="/affiliate-partnerships"
-              className="text-muted-on-black hover:text-gold transition-premium font-medium"
-            >
-              Affiliates
-            </Link>
             <Button 
               variant="premium-outline" 
               size="sm"
@@ -131,13 +125,6 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Newsroom
-            </Link>
-            <Link 
-              to="/affiliate-partnerships"
-              className="block text-muted-on-black hover:text-gold transition-premium font-medium py-3"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Affiliates
             </Link>
             <Button 
               variant="premium-outline" 

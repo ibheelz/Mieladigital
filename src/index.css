@@ -18,10 +18,10 @@
     --premium-white: 0 0% 100%;
     --premium-white-soft: 0 0% 98%;
     
-    /* Luxury gold accents - slightly more subtle */
-    --gold: 43 75% 60%;
-    --gold-light: 43 80% 68%;
-    --gold-dark: 43 70% 50%;
+    /* Luxury gold accents - updated to #fdc600 */
+    --gold: 46 99% 50%;
+    --gold-light: 46 99% 58%;
+    --gold-dark: 46 99% 42%;
     
     /* Text colors */
     --text-on-black: 0 0% 100%;
@@ -44,7 +44,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 43 75% 60%;
+    --accent: 46 99% 50%;
     --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84% 60%;
@@ -52,7 +52,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 43 75% 60%;
+    --ring: 46 99% 50%;
 
     --radius: 0.75rem;
     
