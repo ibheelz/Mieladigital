@@ -21,11 +21,11 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 sm:px-6 py-20">
-      {/* Dark gradient background with orange and blue streaks */}
+      {/* Dark gradient background with yellow and custom blue streaks */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-black">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-blue-500/10"></div>
-        <div className="absolute top-20 left-20 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-transparent to-[#646881]/10"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#646881]/15 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
